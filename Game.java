@@ -1,9 +1,5 @@
 import java.util.ArrayList;
 
-// TODO: [EC][DONE] make auto-set-finder algorithm
-// TODO: [EC]       compress the board when a set is found and no more cards can be added
-// TODO: [EC]       determine if game is *actually* over (i.e. there are no more sets to be found)
-
 public class Game {
     // instance variables
     private Deck deck;
