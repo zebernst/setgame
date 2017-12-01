@@ -45,12 +45,10 @@ public class Deck {
      * Shuffle the Cards in this Deck.
      */
     public void shuffle() {
-        // TODO: review code and adjust for my vars
         int randNum;
         Card temp;
         Random r = new Random();
-        for (int i = 0; i < deck.size(); i++)
-        {
+        for (int i = 0; i < deck.size(); i++) {
             randNum = r.nextInt(deck.size());
             temp = deck.get(i);
             deck.set(i,deck.get(randNum));
