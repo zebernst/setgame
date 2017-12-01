@@ -147,12 +147,12 @@ public class Card {
                 && (c2.getColor() == c3.getColor())
         );
 
-        boolean isColorDifferent = ((c1.getColor() != c2.getColor())
+        boolean isColorUnique = ((c1.getColor() != c2.getColor())
                 && (c1.getColor() != c3.getColor())
                 && (c2.getColor() != c3.getColor())
         );
 
-        boolean isColorSet = (isColorDifferent || isColorMatching);
+        boolean isColorSet = (isColorUnique || isColorMatching);
         // endregion
 
         // region shading
@@ -161,12 +161,12 @@ public class Card {
                 && (c2.getShading() == c3.getShading())
         );
 
-        boolean isShadingDifferent = ((c1.getShading() != c2.getShading())
+        boolean isShadingUnique = ((c1.getShading() != c2.getShading())
                 && (c1.getShading() != c3.getShading())
                 && (c2.getShading() != c3.getShading())
         );
 
-        boolean isShadingSet = (isShadingMatching || isShadingDifferent);
+        boolean isShadingSet = (isShadingMatching || isShadingUnique);
         // endregion
 
         // region shape
@@ -175,12 +175,12 @@ public class Card {
                 && (c2.getShape() == c3.getShape())
         );
 
-        boolean isShapeDifferent = ((c1.getShape() != c2.getShape())
+        boolean isShapeUnique = ((c1.getShape() != c2.getShape())
                 && (c1.getShape() != c3.getShape())
                 && (c2.getShape() != c3.getShape())
         );
 
-        boolean isShapeSet = (isShapeMatching || isShapeDifferent);
+        boolean isShapeSet = (isShapeMatching || isShapeUnique);
         // endregion
 
         // region number
@@ -189,12 +189,12 @@ public class Card {
                 && (c2.getNumber() == c3.getNumber())
         );
 
-        boolean isNumberDifferent = ((c1.getNumber() != c2.getNumber())
+        boolean isNumberUnique = ((c1.getNumber() != c2.getNumber())
                 && (c1.getNumber() != c3.getNumber())
                 && (c2.getNumber() != c3.getNumber())
         );
 
-        boolean isNumberSet = (isNumberMatching || isNumberDifferent);
+        boolean isNumberSet = (isNumberMatching || isNumberUnique);
         // endregion
 
         // check if every single attribute is different

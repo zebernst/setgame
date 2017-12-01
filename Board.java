@@ -19,6 +19,29 @@ public class Board {
         }
     }
 
+    public void compressBoard(ArrayList<BoardSquare> cardsToRemove) {
+        ArrayList<BoardSquare> tempArray = new ArrayList<>();
+        for (ArrayList<BoardSquare> row : board)
+            tempArray.addAll(row);
+        board.clear();
+
+        tempArray.removeAll(cardsToRemove);
+
+        int numCols = tempArray.size() / 3;
+        for (int row = 0; row < 3; row++) {
+            ArrayList<BoardSquare> thisRow = new ArrayList<>(1);
+            for (int col = 0; col < numCols; col++) {
+                BoardSquare tile = tempArray.remove(0);
+
+                // update BoardSquare with new row and column positions
+                tile.setRowPos(row);
+                tile.setColPos(col);
+                thisRow.add(tile);
+            }
+            board.add(thisRow);
+        }
+    }
+
     /**
      * Gets the specified BoardSquare.
      * @param row the row position at which to locate the BoardSquare
