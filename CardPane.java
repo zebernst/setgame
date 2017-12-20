@@ -61,21 +61,20 @@ public class CardPane extends VBox {
         // set shading
         switch (card.getShading()) {
             case SOLID:
-                fillType = cardColor;
-                outlineColor = cardColor;
+                fillType        = cardColor;
+                outlineColor    = cardColor;
                 break;
             case STRIPED:
-                Image hatch = createHatch(cardColor);
-                fillType = new ImagePattern(hatch, 0, 0, 17, 17, false);
-                outlineColor = cardColor;
+                fillType        = new ImagePattern(createHatch(cardColor), 0, 0, 17, 17, false);
+                outlineColor    = cardColor;
                 break;
             case OUTLINED:
-                fillType = Color.TRANSPARENT;
-                outlineColor = cardColor;
+                fillType        = Color.TRANSPARENT;
+                outlineColor    = cardColor;
                 break;
             default:
-                fillType = Color.BLACK;
-                outlineColor = Color.BLACK;
+                fillType        = Color.BLACK;
+                outlineColor    = Color.BLACK;
         }
 
         // draw shape

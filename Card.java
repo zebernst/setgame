@@ -1,9 +1,9 @@
 public class Card {
     // define Enumerated attributes
-    public enum Color      {RED, PURPLE, GREEN}
-    public enum Shading    {SOLID, STRIPED, OUTLINED}
-    public enum Shape      {OVAL, SQUIGGLE, DIAMOND}
-    public enum Number     {ONE, TWO, THREE}
+    public enum Color      {RED,    PURPLE,     GREEN}
+    public enum Shading    {SOLID,  STRIPED,    OUTLINED}
+    public enum Shape      {OVAL,   SQUIGGLE,   DIAMOND}
+    public enum Number     {ONE,    TWO,        THREE}
 
     // define instance variables
     private Color    color;
@@ -72,6 +72,7 @@ public class Card {
             case PURPLE:    sb.append(ANSI_PURPLE + "[P]" + ANSI_RESET); break;
         }
 
+        // return completed string representation
         return sb.toString();
 
     }

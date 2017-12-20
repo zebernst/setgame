@@ -42,6 +42,11 @@ public class Game {
         selectedCards.add(bs);
     }
 
+    /**
+     * Pass-through method for Deck.cardsRemaining().
+     *
+     * @return the number of cards remaining in the deck.
+     */
     public int cardsRemaining() {
         return deck.cardsRemaining();
     }
@@ -86,6 +91,7 @@ public class Game {
      * @return whether or not the three cards in selectedCards are a set.
      */
     public boolean testSelected() {
+        // test if set
         boolean set = Card.isSet(
                 selectedCards.get(0).getCard(),
                 selectedCards.get(1).getCard(),
@@ -93,15 +99,14 @@ public class Game {
         );
 
         // set currentlySelected to false and replace with new Cards (if applicable)
-        for (BoardSquare bs : selectedCards) {
+        for (BoardSquare bs : selectedCards)
             bs.setCurrentlySelected(false);
-        }
+
+        // handle if set
         if (set) {
             if (!deck.isEmpty() && this.numCardsOnBoard() == 12) {
-                for (BoardSquare bs : selectedCards) {
-                    Card newCard = deck.getTopCard();
-                    bs.setCard(newCard);
-                }
+                for (BoardSquare bs : selectedCards)
+                    bs.setCard(deck.getTopCard());
             }
             else if (!deck.isEmpty() && this.numCardsOnBoard() < 12) {
                 board.compressBoard(selectedCards);
@@ -111,6 +116,7 @@ public class Game {
                 board.compressBoard(selectedCards);
             }
         }
+
         // clear ArrayList
         selectedCards.clear();
 
@@ -138,7 +144,7 @@ public class Game {
             for (int col = 0; col < board.numCols(); col++)
                 allCards.add(board.getBoardSquare(row, col));
 
-        // loop through every single unique card
+        // loop through every single unique card combination
         for (int i1 = 0; i1 < allCards.size(); i1++) {
             for (int i2 = 1; i2 < allCards.size(); i2++) {
                 for (int i3 = 2; i3 < allCards.size(); i3++) {
@@ -153,14 +159,14 @@ public class Game {
                                 bs3.getCard()
                         );
 
-                        if (set) {
+                        if (set)
                             return new BoardSquare[] {bs1, bs2, bs3};
-                        }
                     }
                 }
             }
         }
 
+        // if no set found, return empty Array
         return new BoardSquare[] {};
     }
 

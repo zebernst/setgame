@@ -19,6 +19,10 @@ public class Board {
         }
     }
 
+    /**
+     * Compresses board by removing specified cards.
+     * @param cardsToRemove an ArrayList of BoardSquares to remove from the Board.
+     */
     public void compressBoard(ArrayList<BoardSquare> cardsToRemove) {
         ArrayList<BoardSquare> tempArray = new ArrayList<>();
         for (ArrayList<BoardSquare> row : board)
@@ -50,26 +54,6 @@ public class Board {
      */
     public BoardSquare getBoardSquare(int row, int col) {
         return board.get(row).get(col);
-    }
-
-    /**
-     * Gets the Card in the specified BoardSquare.
-     * @param row the row position at which to locate the Card
-     * @param col the column position at which to locate the Card
-     * @return the specified Card
-     */
-    public Card getCard(int row, int col) {
-        return getBoardSquare(row, col).getCard();
-    }
-
-    /**
-     * Replace the Card at the specified location with a new Card
-     * @param card the new Card
-     * @param row the row position at which to insert the new Card
-     * @param col the column position at which to insert the new Card
-     */
-    public void replaceCard(Card card, int row, int col) {
-        getBoardSquare(row, col).setCard(card);
     }
 
     /**
