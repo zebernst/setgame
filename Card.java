@@ -35,15 +35,9 @@ public class Card {
 
         // add shading
         switch (shading) {
-            case SOLID:
-                sb.append("[###]");
-                break;
-            case STRIPED:
-                sb.append("[///]");
-                break;
-            case OUTLINED:
-                sb.append("[___]");
-                break;
+            case SOLID:     sb.append("[###]"); break;
+            case STRIPED:   sb.append("[///]"); break;
+            case OUTLINED:  sb.append("[___]"); break;
         }
 
         // add spacing
@@ -51,15 +45,9 @@ public class Card {
 
         // add number & shapes
         switch (number) {
-            case ONE:
-                sb.append("[1]");
-                break;
-            case TWO:
-                sb.append("[2]");
-                break;
-            case THREE:
-                sb.append("[3]");
-                break;
+            case ONE:       sb.append("[1]"); break;
+            case TWO:       sb.append("[2]"); break;
+            case THREE:     sb.append("[3]"); break;
         }
 
         // add spacing
@@ -67,33 +55,21 @@ public class Card {
 
         // add shape
         switch (shape) {
-            case SQUIGGLE:
-                sb.append(String.format("%-9s", "SQUIGGLE"));
-                break;
-            case DIAMOND:
-                sb.append(String.format("%-9s", "DIAMOND"));
-                break;
-            case OVAL:
-                sb.append(String.format("%-9s", "OVAL"));
-                break;
+            case SQUIGGLE:  sb.append(String.format("%-9s", "SQUIGGLE")); break;
+            case DIAMOND:   sb.append(String.format("%-9s", "DIAMOND"));  break;
+            case OVAL:      sb.append(String.format("%-9s", "OVAL"));     break;
         }
 
-        // add color
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_RED = "\u001B[31m";
-        final String ANSI_GREEN = "\u001B[32m";
-        final String ANSI_PURPLE = "\u001B[35m";
+        // add color via ansi escape codes
+        final String ANSI_RESET  = (char)27 + "[0m";
+        final String ANSI_RED    = (char)27 + "[31m";
+        final String ANSI_GREEN  = (char)27 + "[32m";
+        final String ANSI_PURPLE = (char)27 + "[35m";
 
         switch (color) {
-            case RED:
-                sb.append(ANSI_RED + "[R]" + ANSI_RESET);
-                break;
-            case GREEN:
-                sb.append(ANSI_GREEN + "[G]" + ANSI_RESET);
-                break;
-            case PURPLE:
-                sb.append(ANSI_PURPLE + "[P]" + ANSI_RESET);
-                break;
+            case RED:       sb.append(ANSI_RED    + "[R]" + ANSI_RESET); break;
+            case GREEN:     sb.append(ANSI_GREEN  + "[G]" + ANSI_RESET); break;
+            case PURPLE:    sb.append(ANSI_PURPLE + "[P]" + ANSI_RESET); break;
         }
 
         return sb.toString();
@@ -198,9 +174,6 @@ public class Card {
         // endregion
 
         // check if every single attribute is different
-        if (isColorSet && isShadingSet && isShapeSet && isNumberSet)
-            return true;
-        else
-            return false;
+        return (isColorSet && isShadingSet && isShapeSet && isNumberSet);
     }
 }

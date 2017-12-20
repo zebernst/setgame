@@ -1,24 +1,20 @@
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
-
-import java.util.ArrayList;
 
 public class GameGUI extends Application {
     private Game game;
@@ -53,19 +49,19 @@ public class GameGUI extends Application {
         //region status area
         statusPane = new AnchorPane();
         statusPane.setStyle("-fx-background-color: deepskyblue;"
-                                  + "-fx-border-color: steelblue;"
-                                  + "-fx-border-width: 0px 0px 8px 0px;"
-                                  + "-fx-border-style: solid");
+                                    + "-fx-border-color: steelblue;"
+                                    + "-fx-border-width: 0px 0px 8px 0px;"
+                                    + "-fx-border-style: solid");
 
         TextFlow titleFlow = new TextFlow();
         titleFlow.setTextAlignment(TextAlignment.LEFT);
         titleFlow.setLineSpacing(1.1);
 
         Text title = new Text("The Game of Set");
-        title.setFont(Font.font("Verdana",36));
+        title.setFont(Font.font("Verdana", 36));
 
         Text auth = new Text("\n    by Zach Bernstein");
-        auth.setFont(Font.font("Verdana",16));
+        auth.setFont(Font.font("Verdana", 16));
         auth.setFill(Color.valueOf("#2a2a2a"));
 
         titleFlow.getChildren().addAll(title, auth);
@@ -92,7 +88,7 @@ public class GameGUI extends Application {
                                   + "-fx-border-style: solid");
 
         menuHBox = new HBox(10);
-        menuHBox.setPadding(new Insets(1,5,1,5));
+        menuHBox.setPadding(new Insets(1, 5, 1, 5));
         menuHBox.setAlignment(Pos.CENTER_RIGHT);
 
         AnchorPane.setRightAnchor(statusMessage, 20.);
@@ -148,9 +144,10 @@ public class GameGUI extends Application {
 
     /**
      * Launches the game
+     *
      * @param args args
      */
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -170,7 +167,7 @@ public class GameGUI extends Application {
         Board b = game.getBoard();
         for (int r = 0; r < b.numRows(); r++) {
             for (int c = 0; c < b.numCols(); c++) {
-                Pane cp = new CardPane(b.getBoardSquare(r,c));
+                Pane cp = new CardPane(b.getBoardSquare(r, c));
                 cp.setOnMouseClicked(this::handleSelectCardPane);
                 grid.add(cp, c, r);
             }
@@ -182,9 +179,11 @@ public class GameGUI extends Application {
     }
 
     //region event handlers
+
     /**
      * Event Handler
      * Quits the game
+     *
      * @param e an Event (a Button press)
      */
     private void handleExit(ActionEvent e) {
@@ -196,6 +195,7 @@ public class GameGUI extends Application {
     /**
      * Event Handler
      * Starts a new game
+     *
      * @param e an Event (a Button press)
      */
     private void handleNewGame(ActionEvent e) {
@@ -211,6 +211,7 @@ public class GameGUI extends Application {
     /**
      * Event Handler
      * logic for when the "Find A Set" Button is clicked.
+     *
      * @param e an Event (a Button press)
      */
     private void handleFindSet(ActionEvent e) {
@@ -248,6 +249,7 @@ public class GameGUI extends Application {
     /**
      * Event Handler
      * Handles adding 3 cards to the board when the corresponding button is pressed.
+     *
      * @param e an Event (a button press)
      */
     private void handleAdd3(ActionEvent e) {
@@ -269,6 +271,7 @@ public class GameGUI extends Application {
     /**
      * Event Handler
      * Logic for clicking on a CardPane to select it, and handling any set testing that needs to be done.
+     *
      * @param e a mouse click
      */
     private void handleSelectCardPane(MouseEvent e) {
@@ -289,9 +292,9 @@ public class GameGUI extends Application {
         else if (bs.isCurrentlySelected()) {
             bs.setCurrentlySelected(false);
             cp.setStyle("-fx-background-color: #fff;"
-                                  + "-fx-border-width: 3;"
-                                  + "-fx-border-color: #000;"
-                                  + "-fx-border-style: solid;");
+                                + "-fx-border-width: 3;"
+                                + "-fx-border-color: #000;"
+                                + "-fx-border-style: solid;");
             game.removeSelected(cp.getRow(), cp.getCol());
         }
 

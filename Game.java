@@ -32,6 +32,7 @@ public class Game {
 
     /**
      * Adds a Card object to the ArrayList of selected Cards.
+     *
      * @param row the row that the Card is located in.
      * @param col the column that the Card is located in.
      */
@@ -47,6 +48,7 @@ public class Game {
 
     /**
      * Removes the specified BoardSquare from the selectedCards array.
+     *
      * @param row the row of the BoardSquare to remove.
      * @param col the col of the BoardSquare to remove.
      */
@@ -77,9 +79,10 @@ public class Game {
 
     /**
      * Test whether or not the cards in selectedCards are a set, and adjust the board accordingly.
-     *
+     * <p>
      * This includes setting all BoardSquares to have currentlySelected = false, and then clearing the
      * selectedCards array.
+     *
      * @return whether or not the three cards in selectedCards are a set.
      */
     public boolean testSelected() {
@@ -100,7 +103,7 @@ public class Game {
                     bs.setCard(newCard);
                 }
             }
-            else if (!deck.isEmpty() && this.numCardsOnBoard() < 12){
+            else if (!deck.isEmpty() && this.numCardsOnBoard() < 12) {
                 board.compressBoard(selectedCards);
                 this.add3();
             }
@@ -124,6 +127,7 @@ public class Game {
 
     /**
      * Finds the first available set on the board.
+     *
      * @return an Array of three Cards that form a set.
      */
     public BoardSquare[] findSet() {

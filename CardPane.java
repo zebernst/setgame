@@ -26,7 +26,7 @@ public class CardPane extends VBox {
      */
     public CardPane(BoardSquare bs) {
         // call VBox constructor
-        super(); //TODO: do i need this here?
+        super();
 
         // store position
         this.bs = bs;
